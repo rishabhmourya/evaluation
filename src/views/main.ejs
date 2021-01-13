@@ -1,0 +1,81 @@
+<%- include('partials/header'); -%>
+  <div id="changeBg">
+    <%if (success !='' ){%>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        <strong>
+          <%= success%>
+        </strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <%}%>
+
+        <%if ( error !='' ){%>
+          <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>
+              <%= error %>
+            </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <%}%>
+            <div class="container">
+              <br>
+
+              <div class="row">
+                <% for (let index=0; index < user.length; index++) { %>
+
+
+                  <div class="col-md-3 col-sm-6">
+                    <div class="card">
+                      <div class="card-block">
+                        <div class="card-image">
+                          <% if (user[index].image) {%>
+
+                            <img src="./uploads/<%= user[index].image%>" class="thumbnailProfileImage"
+                              alt="Card image cap">
+                            <%} else {%>
+                              <img src="./uploads/noImage.png" class="thumbnailProfileImage">
+                              <% } %>
+
+
+                        </div>
+
+                        <div class="card-text">
+                          <%-`Name : ${user[index].firstName} ${user[index].lastName} <br> Email : ${user[index].email
+                            }`%>
+                            <% if (currentUser.email==user[index].email ) { %>
+                              <a href="/edit"> <button class="btn btn-sm btn-info"> Edit </button> </a>
+                              <% } %>
+
+                        </div>
+
+
+                      </div>
+                    </div>
+
+                  </div>
+
+
+
+                  <% } %>
+
+              </div>
+
+
+            </div>
+
+
+            <% for (let index=0; index < 15; index++) { %>
+              <br>
+
+              <% } %>
+
+  </div>
+
+  </div>
+  </body>
+
+  </div>
